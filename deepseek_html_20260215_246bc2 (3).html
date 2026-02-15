@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AscendOps · Lead Qualification Infrastructure · Lahore, Pakistan</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #0a2540;
+      line-height: 1.5;
+    }
+
+    :root {
+      --navy: #0a2540;
+      --gold: #d4af37;
+      --gold-light: #f0e1b0;
+      --gold-dark: #b8960b;
+      --slate: #5a6f88;
+      --light: #f5f9ff;
+      --border: rgba(212, 175, 55, 0.2);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--navy);
+    }
+
+    .section-title span {
+      color: var(--gold);
+      border-bottom: 3px solid var(--gold);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 18px 40px;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid var(--gold);
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 30px -10px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+      padding: 16px 40px;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* Top Bar with Contact Info */
+    .top-bar {
+      background: var(--navy);
+      color: white;
+      padding: 12px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .contact-info-header {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info-header a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    .contact-info-header a:hover {
+      color: var(--gold);
+    }
+
+    .contact-info-header i {
+      color: var(--gold);
+    }
+
+    .location-badge {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 5px 15px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Main Header */
+    .main-header {
+      background: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .logo .ascend {
+      color: var(--navy);
+    }
+
+    .logo .ops {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: var(--slate);
+      margin: 25px 0;
+    }
+
+    .hero-contact-card {
+      background: var(--light);
+      border-radius: 30px;
+      padding: 30px;
+      border: 2px solid var(--border);
+      margin-top: 30px;
+    }
+
+    .hero-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .hero-contact-item i {
+      color: var(--gold);
+      font-size: 1.3rem;
+      width: 30px;
+    }
+
+    .hero-contact-item span {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    /* Demo Player */
+    .demo-player {
+      background: var(--navy);
+      border-radius: 32px;
+      padding: 25px;
+      border: 3px solid var(--gold);
+    }
+
+    .demo-screen {
+      background: white;
+      border-radius: 24px;
+      padding: 35px;
+      min-height: 350px;
+    }
+
+    /* Scene Styles */
+    .scene {
+      display: none;
+      text-align: center;
+    }
+
+    .scene.active {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scene i {
+      font-size: 3.5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .scene h3 {
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 15px;
+    }
+
+    .scene p {
+      color: var(--slate);
+    }
+
+    .demo-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .control-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .control-dot.active {
+      background: var(--gold);
+      width: 40px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #f5f9ff, #ffffff);
+      padding: 80px 24px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    .contact-info-card {
+      background: white;
+      border-radius: 40px;
+      padding: 40px;
+      border: 2px solid var(--border);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    }
+
+    .contact-info-card h3 {
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 30px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-detail:last-child {
+      border-bottom: none;
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--navy);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-icon i {
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+
+    .contact-text h4 {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+
+    .contact-text p, .contact-text a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .contact-text a:hover {
+      color: var(--gold);
+    }
+
+    .map-placeholder {
+      background: var(--navy);
+      border-radius: 40px;
+      padding: 40px;
+      color: white;
+      text-align: center;
+      border: 3px solid var(--gold);
+    }
+
+    .map-placeholder i {
+      font-size: 5rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .map-placeholder h4 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    /* Business Hours */
+    .hours-card {
+      background: var(--navy);
+      color: white;
+      border-radius: 30px;
+      padding: 30px;
+      margin-top: 30px;
+    }
+
+    .hours-card h4 {
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo .ascend { color: white; }
+    .footer-logo .ops { color: var(--gold); }
+
+    .footer-contact p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .footer-contact i {
+      color: var(--gold);
+      width: 25px;
+    }
+
+    .footer-contact a {
+      color: #b0c7db;
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(212,175,55,0.3);
+      color: #b0c7db;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .top-bar {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar with Contact Info -->
+  <div class="top-bar">
+    <div class="contact-info-header">
+      <a href="mailto:ascendopsaidigitalmarketing@gmail.com">
+        <i class="fas fa-envelope"></i> ascendopsaidigitalmarketing@gmail.com
+      </a>
+      <a href="tel:+923225707486">
+        <i class="fas fa-phone-alt"></i> +92 322 5707486
+      </a>
+      <a href="#">
+        <i class="fas fa-map-marker-alt"></i> Lahore, Pakistan
+      </a>
+    </div>
+    <div class="location-badge">
+      <i class="fas fa-clock"></i> Mon-Sat: 9AM - 8PM
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="logo">
+      <span class="ascend">ASCEND</span><span class="ops">OPS</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#demo">Demo</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div>
+      <h1>Stop Losing Listings to <span>Slow Follow-Up</span></h1>
+      <p>AscendOps installs a 24/7 automated lead qualification system that captures, qualifies, and books motivated sellers instantly — so you never miss another opportunity.</p>
+      
+      <!-- Contact Card in Hero -->
+      <div class="hero-contact-card">
+        <div class="hero-contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>ascendopsaidigitalmarketing@gmail.com</span>
+        </div>
+        <div class="hero-contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <span>+92 322 5707486</span>
+        </div>
+        <div class="hero-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Lahore, Pakistan</span>
+        </div>
+      </div>
+      
+      <div style="margin-top: 30px;">
+        <button class="btn-primary" onclick="scrollToDemo()">
+          <i class="fas fa-play-circle"></i> See 1-Minute Demo
+        </button>
+        <button class="btn-secondary" onclick="scrollToContact()">
+          Contact Us
+        </button>
+      </div>
+    </div>
+
+    <!-- Demo Player -->
+    <div class="demo-player" id="demo">
+      <div class="demo-screen">
+        <!-- Scene 1 -->
+        <div id="scene1" class="scene active">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Are you losing motivated sellers?</h3>
+          <p>30-50% of leads lost to slow response</p>
+          <p style="margin-top: 20px; color: var(--gold);">
+            <i class="fas fa-clock"></i> 15min average response time
+          </p>
+        </div>
+        
+        <!-- Scene 2 -->
+        <div id="scene2" class="scene">
+          <i class="fas fa-check-circle"></i>
+          <h3>Qualified Seller Detected</h3>
+          <div style="background: #f5f9ff; padding: 15px; border-radius: 16px; max-width: 280px; margin: 15px auto;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>Today 2:00 PM</span>
+              <i class="fas fa-calendar-alt" style="color: var(--gold);"></i>
+            </div>
+            <div style="background: white; padding: 10px; border-radius: 10px; margin-top: 10px;">
+              Johnson Family · 4BR · Pre-approved
+            </div>
+          </div>
+        </div>
+        
+        <!-- Scene 3 -->
+        <div id="scene3" class="scene">
+          <i class="fas fa-bell"></i>
+          <h3>Instant Notifications</h3>
+          <div style="background: #f5f9ff; padding: 15px; border-radius: 16px; margin: 10px;">
+            <i class="fas fa-sms"></i> New qualified seller - 2:00 PM
+          </div>
+          <div style="background: #f5f9ff; padding: 15px; border-radius: 16px;">
+            <i class="fas fa-envelope"></i> Lead captured & scheduled
+          </div>
+        </div>
+        
+        <!-- Scene 4 -->
+        <div id="scene4" class="scene">
+          <i class="fas fa-chart-line"></i>
+          <h3>Your Results</h3>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px;">
+            <div style="background: #f5f9ff; padding: 15px; border-radius: 12px;">
+              <div style="color: var(--gold); font-size: 2rem;">10</div>
+              <div>Leads</div>
+            </div>
+            <div style="background: #f5f9ff; padding: 15px; border-radius: 12px;">
+              <div style="color: var(--gold); font-size: 2rem;">6</div>
+              <div>Appointments</div>
+            </div>
+          </div>
+          <div style="background: var(--navy); color: white; padding: 15px; border-radius: 16px;">
+            <span style="color: var(--gold);">$90,000</span> potential commission
+          </div>
+        </div>
+      </div>
+      
+      <div class="demo-controls">
+        <button class="control-dot active" onclick="changeScene(1)"></button>
+        <button class="control-dot" onclick="changeScene(2)"></button>
+        <button class="control-dot" onclick="changeScene(3)"></button>
+        <button class="control-dot" onclick="changeScene(4)"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section id="solutions" style="background: #f5f9ff; padding: 60px 24px;">
+    <div class="container">
+      <h2 class="section-title"><span>Your Website Becomes</span> a 24/7 Sales Engine</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+        <div style="background: white; padding: 40px; border-radius: 30px; border: 1px solid var(--border);">
+          <i class="fas fa-bolt" style="color: var(--gold); font-size: 2.5rem;"></i>
+          <h3 style="margin: 20px 0;">Instant Response</h3>
+          <p style="color: var(--slate);">Every inquiry receives immediate engagement — within 3 seconds.</p>
+        </div>
+        <div style="background: white; padding: 40px; border-radius: 30px; border: 1px solid var(--border);">
+          <i class="fas fa-filter" style="color: var(--gold); font-size: 2.5rem;"></i>
+          <h3 style="margin: 20px 0;">Smart Qualification</h3>
+          <p style="color: var(--slate);">Filters for urgency, property type, and intent.</p>
+        </div>
+        <div style="background: white; padding: 40px; border-radius: 30px; border: 1px solid var(--border);">
+          <i class="fas fa-calendar-check" style="color: var(--gold); font-size: 2.5rem;"></i>
+          <h3 style="margin: 20px 0;">Automatic Booking</h3>
+          <p style="color: var(--slate);">Qualified sellers book directly into your calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title"><span>Contact</span> AscendOps</h2>
+      <p style="font-size: 1.2rem; color: var(--slate); max-width: 700px;">Based in Lahore, serving agents worldwide with 24/7 lead qualification infrastructure.</p>
+      
+      <div class="contact-grid">
+        <!-- Contact Information Card -->
+        <div class="contact-info-card">
+          <h3>Get in Touch</h3>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <a href="mailto:ascendopsaidigitalmarketing@gmail.com">
+                ascendopsaidigitalmarketing@gmail.com
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Phone / WhatsApp</h4>
+              <a href="tel:+923225707486">+92 322 5707486</a>
+              <p style="color: var(--gold);">Available 9AM - 8PM</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>Office Location</h4>
+              <p>Lahore, Pakistan</p>
+              <p style="color: var(--gold);">Remote support worldwide</p>
+            </div>
+          </div>
+          
+          <!-- Business Hours -->
+          <div class="hours-card">
+            <h4><i class="fas fa-clock"></i> Business Hours</h4>
+            <div class="hours-row">
+              <span>Monday - Friday</span>
+              <span>9:00 AM - 8:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span>Saturday</span>
+              <span>10:00 AM - 6:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span>Sunday</span>
+              <span>Closed</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Map / Location Card -->
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <h4>Lahore, Pakistan</h4>
+          <p>Serving Real Estate Agents Globally</p>
+          <div style="margin-top: 30px; background: var(--gold); color: var(--navy); padding: 15px; border-radius: 30px; font-weight: 600;">
+            <i class="fas fa-globe"></i> Remote Setup Worldwide
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section style="padding: 60px 24px; text-align: center;">
+    <div style="max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, #f5f9ff, white); padding: 60px; border-radius: 60px; border: 2px solid var(--gold);">
+      <h2 class="section-title">Ready to Capture <span>Every Motivated Seller?</span></h2>
+      <p style="font-size: 1.3rem; color: var(--slate); margin: 30px 0;">Contact us today for your personalized demo and setup call.</p>
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+        <a href="mailto:ascendopsaidigitalmarketing@gmail.com" class="btn-primary">
+          <i class="fas fa-envelope"></i> Email Us
+        </a>
+        <a href="tel:+923225707486" class="btn-secondary">
+          <i class="fas fa-phone-alt"></i> Call Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <span class="ascend">ASCEND</span><span class="ops">OPS</span>
+        </div>
+        <p style="color: #b0c7db; margin-bottom: 20px;">24/7 Lead Qualification Infrastructure for Top-Tier Agents</p>
+      </div>
+      
+      <div>
+        <h4 style="color: var(--gold); margin-bottom: 20px;">Quick Links</h4>
+        <p><a href="#home" style="color: #b0c7db; text-decoration: none;">Home</a></p>
+        <p><a href="#solutions" style="color: #b0c7db; text-decoration: none;">Solutions</a></p>
+        <p><a href="#demo" style="color: #b0c7db; text-decoration: none;">Demo</a></p>
+        <p><a href="#contact" style="color: #b0c7db; text-decoration: none;">Contact</a></p>
+      </div>
+      
+      <div>
+        <h4 style="color: var(--gold); margin-bottom: 20px;">Support</h4>
+        <p><a href="#" style="color: #b0c7db; text-decoration: none;">FAQ</a></p>
+        <p><a href="#" style="color: #b0c7db; text-decoration: none;">Privacy Policy</a></p>
+        <p><a href="#" style="color: #b0c7db; text-decoration: none;">Terms of Service</a></p>
+      </div>
+      
+      <div class="footer-contact">
+        <h4 style="color: var(--gold); margin-bottom: 20px;">Contact Info</h4>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:ascendopsaidigitalmarketing@gmail.com">ascendopsaidigitalmarketing@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+923225707486">+92 322 5707486</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>© 2026 AscendOps. All rights reserved. | Lahore, Pakistan | 24/7 Support Available</p>
+    </div>
+  </footer>
+
+  <script>
+    // Demo Scene Management
+    let currentScene = 1;
+    
+    function changeScene(sceneNum) {
+      // Hide all scenes
+      for (let i = 1; i <= 4; i++) {
+        const scene = document.getElementById('scene' + i);
+        if (scene) scene.classList.remove('active');
+      }
+      
+      // Show selected scene
+      const newScene = document.getElementById('scene' + sceneNum);
+      if (newScene) newScene.classList.add('active');
+      
+      // Update dots
+      const dots = document.querySelectorAll('.control-dot');
+      dots.forEach((dot, index) => {
+        if (index + 1 === sceneNum) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      
+      currentScene = sceneNum;
+    }
+    
+    // Auto-advance scenes
+    setInterval(() => {
+      let nextScene = currentScene + 1;
+      if (nextScene > 4) nextScene = 1;
+      changeScene(nextScene);
+    }, 5000);
+    
+    // Scroll functions
+    function scrollToDemo() {
+      document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function scrollToContact() {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Initialize
+    changeScene(1);
+  </script>
+</body>
+</html>

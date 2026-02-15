@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AscendOps · Personalized Demo</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a2540, #0a1a2b);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .demo-card {
+      max-width: 1000px;
+      width: 100%;
+      background: white;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 3px solid #d4af37;
+    }
+    .header {
+      background: #0a2540;
+      padding: 25px;
+      text-align: center;
+      border-bottom: 3px solid #d4af37;
+    }
+    .header h1 {
+      color: white;
+      font-size: 2.5rem;
+    }
+    .header span {
+      color: #d4af37;
+    }
+    .content {
+      padding: 40px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid rgba(212,175,55,0.3);
+      border-radius: 16px;
+      font-size: 1rem;
+    }
+    .btn {
+      background: #d4af37;
+      color: #0a2540;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 60px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.1rem;
+    }
+    .contact-info {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f5f9ff;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .contact-info p {
+      margin: 10px 0;
+      color: #0a2540;
+    }
+    .contact-info i {
+      color: #d4af37;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-card">
+    <div class="header">
+      <h1>ASCEND<span>OPS</span></h1>
+      <p style="color: #d4af37; margin-top: 10px;">Personalized Demo</p>
+    </div>
+    <div class="content">
+      <div class="form-group">
+        <input type="text" id="agentName" placeholder="Your Name" value="Michael">
+      </div>
+      <div class="form-group">
+        <input type="text" id="agentCity" placeholder="Your City" value="Lahore">
+      </div>
+      <button class="btn" onclick="updateDemo()">
+        <i class="fas fa-magic"></i> Personalize Demo
+      </button>
+      
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> ascendopsaidigitalmarketing@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +92 322 5707486</p>
+        <p><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    function updateDemo() {
+      alert('Demo personalized for ' + document.getElementById('agentName').value);
+    }
+  </script>
+</body>
+</html>
